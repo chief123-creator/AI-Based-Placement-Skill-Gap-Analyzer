@@ -5,7 +5,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from app.routers.health import router as health_router
 from app.routers.auth import router as auth_router
 from app.routers.resume import router as resume_router
-
+from app.routers import job_description
 from app.database import engine, Base
 
 app = FastAPI(title="AI Placement API")
@@ -23,6 +23,8 @@ app.add_middleware(
 app.include_router(health_router, prefix="/api/v1")
 app.include_router(auth_router, prefix="/api/v1")
 app.include_router(resume_router, prefix="/api/v1/resumes")  # NOTE: Different prefix!
+app.include_router(job_description.router, prefix="/api/v1")
+
 
 @app.get("/")
 def root():
