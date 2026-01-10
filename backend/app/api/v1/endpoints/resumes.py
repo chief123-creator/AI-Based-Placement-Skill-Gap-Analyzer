@@ -29,7 +29,7 @@ async def upload_resume(
     """
     try:
         # Step 1: Save file to disk
-        file_info = await file_handler.save_uploaded_file(file, int(current_user.id))
+        file_info = await file_handler.save_uploaded_file(file, int(current_user.id.value))
         
         # Step 2: Parse resume
         parser = ResumeParser(db)
@@ -53,8 +53,8 @@ async def upload_resume(
         db.refresh(resume)
         
         return ResumeUploadResponse(
-            id=resume.id,
-            original_filename=resume.original_filename,
+            id=resume.id if isinstance(resume.id, int) else resume.id.value,
+            original_filename=str(resume.original_filename),
             skills_found=parsed_data['parsed_sections']['skill_count'],
             message="Resume uploaded and parsed successfully"
         )
@@ -77,11 +77,11 @@ def get_my_resumes(
     
     return [
         ResumeListItem(
-            id=resume.id,
-            original_filename=resume.original_filename,
-            file_size=resume.file_size,
-            skill_count=len(resume.extracted_skills) if resume.extracted_skills else 0,
-            created_at=resume.created_at
+            id=resume.id if isinstance(resume.id, int) else resume.id.value,
+            original_filename=str(resume.original_filename),
+            file_size=int(resume.file_size) if resume.file_size else 0,
+            skill_count=len(resume.extracted_skills) if isinstance(resume.extracted_skills, list) else 0,
+            created_at=resume.created_at.isoformat() if resume.created_at and hasattr(resume.created_at, 'isoformat') else str(resume.created_at) if resume.created_at else ""
         )
         for resume in resumes
     ]
