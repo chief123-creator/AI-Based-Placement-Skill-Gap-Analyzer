@@ -1,0 +1,12 @@
+# Requirements for AI-Based Placement Skill Gap Analyzer
+# Core dependencies
+sqlalchemy
+fastapi
+uvicorn
+pydantic-settings
+dotenv
+pdfminer.six
+python-docx
+
+# Additional dependencies
+pytest

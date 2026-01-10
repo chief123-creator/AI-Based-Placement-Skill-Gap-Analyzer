@@ -44,3 +44,4 @@ class User(Base):
     role = Column(String, nullable=False, default=UserRole.STUDENT.value)
     is_active = Column(Boolean, nullable=False, default=True)
     resumes = relationship("Resume", back_populates="user")
+    job_descriptions = relationship("JobDescription", back_populates="user")
