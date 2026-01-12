@@ -1,0 +1,30 @@
+John Doe
+Software Engineer
+Email: john@example.com | Phone: +91-1234567890
+
+SUMMARY
+Experienced software developer with 3 years of experience in full-stack development using React, Python, and SQL.
+
+SKILLS
+- Programming Languages: Python, JavaScript, Java, C++
+- Frontend: React, HTML, CSS, Tailwind CSS, Next.js
+- Backend: FastAPI, Node.js, Express, Django, Flask
+- Databases: MySQL, PostgreSQL, MongoDB
+- Tools: Git, Docker, AWS, VS Code, Postman
+- Other: Machine Learning, Natural Language Processing, REST APIs
+
+EXPERIENCE
+Software Developer at Tech Corp (2022-2025)
+- Built web applications using React and FastAPI
+- Implemented ML models using scikit-learn and TensorFlow
+- Worked with PostgreSQL databases and wrote complex SQL queries
+- Deployed applications on AWS using Docker containers
+
+EDUCATION
+B.Tech in Computer Science
+XYZ University (2018-2022)
+
+PROJECTS
+- E-commerce Platform: Built using React, Node.js, and MongoDB
+- AI Chatbot: Implemented using Python, spaCy, and OpenAI API
+- Data Analytics Dashboard: Created visualizations using Python and pandas
