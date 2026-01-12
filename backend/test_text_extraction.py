@@ -2,7 +2,7 @@ from app.services.resume_parser import ResumeParser
 from app.database import SessionLocal
 
 # Test file
-file_path = "D:\\AI-Based-Placement-Skill-Gap-Analyzer-main\\backend\\test1.pdf"
+file_path = "D:\\AI-Based-Placement-Skill-Gap-Analyzer-main\\backend\\test2.pdf"
 
 # Parse resume
 db = SessionLocal()

@@ -7,6 +7,7 @@ from app.routers.auth import router as auth_router
 from app.routers.resume import router as resume_router
 from app.routers import job_description
 from app.database import engine, Base
+from app.routers import skill_gap
 
 app = FastAPI(title="AI Placement API")
 
@@ -26,6 +27,8 @@ app.include_router(resume_router, prefix="/api/v1/resumes")  # NOTE: Different p
 app.include_router(job_description.router, prefix="/api/v1")
 #For testing similarity
 app.include_router(test_similarity.router, prefix="/api/v1")
+app.include_router(skill_gap.router, prefix="/api/v1")
+
 
 @app.get("/")
 def root():

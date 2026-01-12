@@ -42,21 +42,33 @@ class ResumeParser:
         
         # Step 2: Extract skills
         skill_ids = self.skill_extractor.extract_skills(extracted_text)
-        skill_names = self.skill_extractor.get_skill_names(skill_ids)
+        
+        # CHANGED: Convert skill IDs to full skill objects like JD format
+        from app.models.skill import Skill
+        skills_objects = self.db.query(Skill).filter(Skill.id.in_(skill_ids)).all()
+        extracted_skills_formatted = [
+            {
+                "id": skill.id,
+                "name": skill.name,
+                "category": skill.category
+            }
+            for skill in skills_objects
+        ]
+        
+        skill_names = [skill.name for skill in skills_objects]
         skills_by_category = self.skill_extractor.get_skills_by_category(skill_ids)
         
-        #Step 3: Generate embedding
+        # Step 3: Generate embedding
         embedding = self.embedding_service.generate_embedding(extracted_text)
 
         # Step 4: Build response
         return {
             'extracted_text': extracted_text,
-            'extracted_skills': skill_ids,
+            'extracted_skills': extracted_skills_formatted,  # CHANGED from skill_ids
             'parsed_sections': {
                 'skills': skill_names,
                 'skill_count': len(skill_ids),
                 'skills_by_category': skills_by_category
             },
-            'embedding': embedding  # MOVED HERE
+            'embedding': embedding
         }
-

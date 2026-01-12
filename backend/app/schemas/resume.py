@@ -21,7 +21,7 @@ class ResumeDetail(BaseModel):
     stored_filename: str
     file_size: int
     file_type: str
-    extracted_skills: Optional[List[int]] = None
+    extracted_skills: Optional[List[Dict]] = None
     parsed_sections: Optional[Dict] = None
     created_at: datetime
     
